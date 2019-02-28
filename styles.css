@@ -2,7 +2,7 @@ body {
   margin: 0px;
   font-size: 1em;
   font-family: 'Raleway';
-  background: lightblue;
+  background: white;
   color: #111;
   width: 100vw;
   height: 100vh;
@@ -214,9 +214,8 @@ hr {
   position: absolute;
   z-index: 10;
   top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background-color: rgb(30, 200, 251);
   /* background-color: rgb(66, 37, 92); */
   display: flex;
@@ -225,11 +224,19 @@ hr {
 }
 
 .floating-section#codeSection { 
+  left: 0px;
   background-color: rgb(30, 200, 251);
+  -webkit-box-shadow: 10px 10px 0px -1px rgba(0,0,0,1);
+  -moz-box-shadow: 10px 10px 0px -1px rgba(0,0,0,1);
+  box-shadow: 10px 10px 0px -1px rgba(0,0,0,1);
 }
 
 .floating-section#artSection { 
   background-color: rgb(30, 200, 251);
+  -webkit-box-shadow: -10px 10px 0px -1px rgba(0,0,0,1);
+  -moz-box-shadow: -10px 10px 0px -1px rgba(0,0,0,1);
+  box-shadow: -10px 10px 0px -1px rgba(0,0,0,1);
+  right: 0px;
 }
 
 .floating-section[data-state=closed] {

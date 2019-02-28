@@ -71,7 +71,6 @@ function setRandomText1() {
     stupidText.style.top = positionY + 'px';
     stupidText.style.left = positionX + 'px';
     stupidText.style.transitionDuration = speed + 'ms';
-    console.log('set time', speed);
 }
 
 function setRandomText2() {
@@ -82,7 +81,6 @@ function setRandomText2() {
     stupidText.style.top = positionY + 'px';
     stupidText.style.left = positionX + 'px';
     stupidText.style.transitionDuration = speed + 'ms';
-    console.log('set time', speed);
 }
  
 function tickClockForRandomGeneriation() {
@@ -93,5 +91,5 @@ function tickClockForRandomGeneriation() {
 function loadApp() {
     tickClockForRandomGeneriation();
     setSection(ART_SECTION, CLOSED);
-    setSection(CODE_SECTION, OPEN);
+    setSection(CODE_SECTION, CLOSED);
 }
