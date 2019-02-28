@@ -27,7 +27,7 @@ h1, p {
 }
 /* optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-  background: #FF0000;
+  background: #ddd;
 }
 
 .main-container {
@@ -213,13 +213,48 @@ hr {
   z-index: 10;
   top: 0px;
   left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(66, 37, 92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.floating-section#codeSection { 
+  background-color: rgb(30, 200, 251);
+}
+
 
 .floating-section[data-state=closed] {
   display: none;
-  background: blue;
+  /* background: blue; */
 }
 .floating-section[data-state=open] {
-  display: inherit;
-  background: red;
+  display: flex;
+  /* background: red; */
+}
+
+.floating-section .section-content {
+  width: 95%;
+  height: 95%;
+  position: relative;
+  overflow-y: auto;
+}
+
+.floating-section .section-content .close-button { 
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+}
+
+.floating-section .section-content .close-button:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.codeFillSection {
+  background: white;
+  height: -webkit-fill-available;
 }

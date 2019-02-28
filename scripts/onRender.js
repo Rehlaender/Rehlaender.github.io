@@ -7,12 +7,11 @@ var OPEN = 'open';
 var CLOSED = 'closed';
 
 function loadApp() {
-    // setSection(ART_SECTION, CLOSED);
-    // setSection(CODE_SECTION, CLOSED);
+    setSection(ART_SECTION, CLOSED);
+    setSection(CODE_SECTION, CLOSED);
 }
 
 function setSection(section, setState) {
-    console.log(section, setState, 'wghyt', document.getElementById(section).getAttribute('data-state'));
     document.getElementById(section).setAttribute('data-state', setState);
 }
 
@@ -29,4 +28,13 @@ function openCodeSection() {
 function openArtSection() {
     setSection(CODE_SECTION, CLOSED);
     setSection(ART_SECTION, OPEN);
+}
+
+function closeArtSection() {
+    setSection(ART_SECTION, CLOSED);
+}
+
+function closeCodeSection() {
+    console.log('help')
+    setSection(CODE_SECTION, CLOSED);
 }
