@@ -2,25 +2,104 @@ body {
   margin: 0px;
   font-size: 1em;
   font-family: 'Raleway';
-  background: #add8e6;
+  background: white;
   color: #111;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow-x: hidden;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
 
+h1, p {
+  margin: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;  /* remove scrollbar space */
+  background: white;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #ddd;
 }
 
 .main-container {
+  height: 100%;
+  width: 100%;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  position: relative;
+}
+
+section {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background: white;
+}
+
+/* section:nth-child(odd) {
+  background: rgba(100, 100, 100, 0.5);
+} */
+
+.content-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-top: 2em;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.content {
   height: 90%;
   width: 90%;
+  background-color: rgb(30, 200, 251);
+  /* background-color: rgb(66, 37, 92); */
+  overflow: hidden;
+  color: white;
+  z-index: 1;
+  position: relative;
+}
+
+.triangle-text {
+  border-width: 0 100px 173.2px 100px;
+}
+
+.shaped {
+  height:100%;
+  width: 60%;
+  float:right;
+  background: black;
+  /* background: black url('yop.jpg') center top no-repeat; */
+  background-size: cover;
+  /* shape-outside: polygon(0 0, 100% 0, 100% 100%, 30% 100%); */
+  shape-margin: 20px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+  /* shape-outside: url('yop.jpg'); */
+  shape-image-threshold: 0.5;
+  shape-outside: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+}
+
+.visible {
+  opacity: 1;
+}
+
+.person-container {
+  position: fixed;
+  bottom: 10px;
+  right: 2rem;
+  z-index: 0;
+  border: 1px solid black;
+  height: 100px;
+  width: 200px;
 }
 
 h1 {
@@ -45,4 +124,185 @@ hr {
 
 .view-it-on-github {
   text-decoration: none;
+}
+
+
+.bio.words {
+  padding: 1rem;
+  text-align: center;
+}
+
+.bio p {
+  text-align: justify;
+  font-size: 1.2rem;
+}
+
+.bio p em {
+  text-align: left;
+  font-size: 1rem;
+}
+
+.bio .born {
+  text-align: center;
+}
+
+.bio .quote {
+  line-break: normal;
+}
+
+.bio .contact p {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.shortcuts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.awesome-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.awesome-buttons div {
+  border: 1px solid white;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.awesome-buttons div img {
+  filter: invert(100%);
+}
+
+.awesome-buttons div:hover{ 
+  background-color: white;
+  border-color: black;
+  cursor: pointer;
+}
+
+.awesome-buttons div:hover img{ 
+  filter: invert(0%);
+}
+
+.shaped-invert {
+  height:100%;
+  width: 60%;
+  background: black;
+  /* background: black url('yop.jpg') center top no-repeat; */
+  background-size: cover;
+  /* shape-outside: polygon(0 0, 100% 0, 100% 100%, 30% 100%); */
+  shape-margin: 20px;
+  clip-path: polygon(0 0, 60% 0, 100% 100%, 0% 100%);
+  /* shape-outside: url('yop.jpg'); */
+  shape-image-threshold: 0.5;
+  shape-outside: polygon(0 0, 60% 0, 100% 100%, 0% 100%);
+}
+
+.bio-words-invert {
+  width: 40%;
+  float: right;
+}
+
+.floating-section {
+  position: absolute;
+  z-index: 10;
+  top: 0px;
+  width: 90%;
+  height: 90%;
+  background-color: rgb(30, 200, 251);
+  /* background-color: rgb(66, 37, 92); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floating-section#codeSection { 
+  left: 0px;
+  background-color: rgb(30, 200, 251);
+  -webkit-box-shadow: 10px 10px 0px -1px rgba(0,0,0,1);
+  -moz-box-shadow: 10px 10px 0px -1px rgba(0,0,0,1);
+  box-shadow: 10px 10px 0px -1px rgba(0,0,0,1);
+}
+
+.floating-section#artSection { 
+  background-color: rgb(30, 200, 251);
+  -webkit-box-shadow: -10px 10px 0px -1px rgba(0,0,0,1);
+  -moz-box-shadow: -10px 10px 0px -1px rgba(0,0,0,1);
+  box-shadow: -10px 10px 0px -1px rgba(0,0,0,1);
+  right: 0px;
+}
+
+.floating-section#hackSection { 
+  top: 50%;
+  height: auto;
+  background-color: rgb(30, 200, 251);
+  -webkit-box-shadow: 0px 10px 0px 10px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 10px 0px 10px rgba(0,0,0,1);
+  box-shadow: 0px 10px 0px 10px rgba(0,0,0,1);
+}
+
+.floating-section[data-state=closed] {
+  display: none;
+  /* background: blue; */
+}
+.floating-section[data-state=open] {
+  display: flex;
+  /* background: red; */
+}
+
+.floating-section .section-content {
+  width: 95%;
+  height: 95%;
+  position: relative;
+  overflow-y: auto;
+}
+
+.floating-section .section-content .close-button { 
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+}
+
+.floating-section .section-content .close-button:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.codeFillSection {
+  position: relative;
+  background: white;
+  color: black;
+  height: -webkit-fill-available;
+  overflow: hidden;
+}
+
+#stupidText, #stupidText2 {
+  position: relative;
+  font-family: 'Srisakdi';
+  border: 1px solid black;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  font-size: 2rem; 
+  transition-property: all;
+}
+
+#hackInput[type=text] {
+  font-size: 3em;
+  padding: 0px;
+  border: 0px;
+  margin-bottom: 50px;
+}
+
+#hackInput[type=text]:focus {
+  border: 0px;
+  outline: none;
 }
