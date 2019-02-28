@@ -101,6 +101,11 @@
                     <img src="./code.png" alt="">
                   </div>
                 </div>
+                <div class="awesome-buttons" onclick="openHackSection()">
+                  <div>
+                      🤠
+                  </div>
+                </div>
                 <div class="awesome-buttons" onclick="openArtSection()">
                   <div>
                     <img src="./art.png" alt="">
@@ -117,50 +122,50 @@
             </div>          
           </div>
           <div id="artSection" class="floating-section" data-state="closed">
-              <div class="section-content">
-                <div class="close-button" onclick="closeArtSection()">x</div>
-                <h1>art</h1>
-                <p>asdf</a></p>
-                <ul style="width: 100%; padding: 0px; list-style-type: none;">
-                    <p>music: </p>
-                    <hr>
-                    <li>
-                      <a class="link-title" href="https://rehlaender.github.io/react-portfolio">★ redux/thunk app</a>
-                      <span class="link-info">an example app using redux/thunk
-                        (<a class="view-it-on-github" href="https://github.com/Rehlaender/react-portfolio">view it on github</a>)
-                      </span>
-                    </li>
-                    <hr>
-                    <p>books: </p>
-                    <hr>
-                    <li>
-                      <a class="link-title">colorsocket</a>
-                      <span class="link-info">react app wich uses websockets for live canvas-drawings (could not deploy this app, because it uses rethinkDB)
-                        (<a class="view-it-on-github" href="https://github.com/Rehlaender/colorsocket">view it on github</a>)
-                      </span>
-                    </li>
-                  </ul>
+            <div class="section-content">
+              <div class="close-button" onclick="closeArtSection()">x</div>
+              <h1>art</h1>
+              <p>i love art, here's some stuff i've done. </p>
+              <ul style="width: 100%; padding: 0px; list-style-type: none;">
+                  <p>music: </p>
                   <hr>
-                  <div class="codeFillSection">innecesary animation of something</div>
-                </div>
+                  <li>
+                    <a class="link-title" href="https://whalecoma.bandcamp.com/">whalecoma</a>
+                    <span class="link-info">bassist, letters & vocals</span>
+                  </li>
+                  <li>
+                      <a class="link-title" href="https://perdidosenelmar.bandcamp.com/releases">perdidos en el mar</a>
+                      <span class="link-info">i do everything</span>
+                    </li>
+                  <hr>
+                  <p>books & zines: </p>
+                  <hr>
+                  <li># doing</li>
+                  <li><a class="link-title">cuatro no es el numero</a></li>
+                  <li><a class="link-title">basura que se cree poesia</a></li>
+                  <li><a class="link-title">entonces, donde es casa?</a></li>
+                  <p>books & zines: </p>
+                  <hr>
+                  <li># doing</li>
+              </ul>
+              <hr>
             </div>
+          </div>
+          <div id="hackSection" class="floating-section" data-state="closed">
+              <div class="section-content">
+                <div class="close-button" onclick="closeHackSection()">x</div>
+                <h1>hack</h1>
+                <p>try a command. </p>
+                <br>
+                <input type="text" id="hackInput" maxlength="10">
+                <br>
+              </div>
+              <br>
+          </div>
         </div>
       </section>
-      <!-- <section id="codeSection" class="visible">
-          <div class="content-container">
-              <div class="content">
-               
-              </div>
-            </div>
-      </section>
 
-      <section class="visible">
-          <h2>#art</h2>
-          <span>add bio</span>
-      </section>
-    </div> -->
-
-    <div class="person-container">
+      <div class="person-container">
       #person container
     </div>
 

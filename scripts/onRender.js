@@ -1,7 +1,7 @@
 var ART_SECTION = 'artSection';
 var BIO_SECTION = 'bioSection';
 var CODE_SECTION = 'codeSection';
-var HACKS_SECTION = 'hacksSection';
+var HACKS_SECTION = 'hackSection';
 
 var OPEN = 'open';
 var CLOSED = 'closed';
@@ -17,11 +17,16 @@ function toggleSection(section) {
 
 function openCodeSection() {
     setSection(CODE_SECTION, OPEN);
-    setSection(ART_SECTION, CLOSED);
+    // setSection(ART_SECTION, CLOSED);
+}
+
+function openHackSection() {
+    setSection(HACKS_SECTION, OPEN);
+    // setSection(ART_SECTION, CLOSED);
 }
 
 function openArtSection() {
-    setSection(CODE_SECTION, CLOSED);
+    // setSection(CODE_SECTION, CLOSED);
     setSection(ART_SECTION, OPEN);
 }
 
@@ -30,8 +35,11 @@ function closeArtSection() {
 }
 
 function closeCodeSection() {
-    console.log('help')
     setSection(CODE_SECTION, CLOSED);
+}
+
+function closeHackSection() {
+    setSection(HACKS_SECTION, CLOSED);
 }
 
 // min-max
@@ -92,4 +100,5 @@ function loadApp() {
     tickClockForRandomGeneriation();
     setSection(ART_SECTION, CLOSED);
     setSection(CODE_SECTION, CLOSED);
+    setSection(HACKS_SECTION, CLOSED);
 }
