@@ -6,6 +6,17 @@ var HACKS_SECTION = 'hackSection';
 var OPEN = 'open';
 var CLOSED = 'closed';
 
+var EMOJI_ARRAY = ["✌", "😂", "😝", "😁", "😱", "👉", "🙌", "🍻", 
+                "🔥", "🌈", "☀", "🎈", "🌹", "💄", "🎀", "⚽", "🎾", "🏁", 
+                "😡", "👿", "🐻", "🐶", "🐬", "🐟", "🍀", "👀", "🚗", "🍎", 
+                "💝", "💙", "👌", "❤", "😍", "😉", "😓", "😳", "💪", "💩", 
+                "🍸", "🔑", "💖", "🌟", "🎉", "🌺", "🎶", "👠", "🏈", "⚾", 
+                "🏆", "👽", "💀", "🐵", "🐮", "🐩", "🐎", "💣", "👃", "👂", 
+                "🍓", "💘", "💜", "👊", "💋", "😘", "😜", "😵", "🙏", "👋", 
+                "🚽", "💃", "💎", "🚀", "🌙", "🎁", "⛄", "🌊", "⛵", "🏀", 
+                "🎱", "💰", "👶", "👸", "🐰", "🐷", "🐍", "🐫", "🔫", "👄", 
+                "🚲", "🍉", "💛", "💚"];
+
 function setSection(section, setState) {
     document.getElementById(section).setAttribute('data-state', setState);
 }
@@ -51,7 +62,19 @@ var positionY = '0';
 var speed = '300';
 
 function generateRandomNumber(max, min) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateRandomSquares() {
+    return generateRandomNumber(200, 100);
+}
+
+function generateRandomWidth() {
+    return generateRandomNumber(200, 50);
+}
+
+function generateRandomHeight() {
+    return generateRandomNumber(200, 50);
 }
 
 function generateRandomXPosition() {
@@ -90,15 +113,37 @@ function setRandomText2() {
     stupidText.style.left = positionX + 'px';
     stupidText.style.transitionDuration = speed + 'ms';
 }
- 
+
 function tickClockForRandomGeneriation() {
     window.setInterval(setRandomText, 1200);
 }
 
+function createRandomArtsySquares() {
+    var squares = generateRandomSquares();
+    for (var i = 0; i < squares; i++) {
+        
+        var squareHeight = generateRandomHeight();
+        var squareWidth = generateRandomWidth();
+        var squareLeft = generateRandomXPosition();
+        var squareTop = generateRandomYPosition();
+        
+        var randomSquare = document.createElement("DIV");
+        randomSquare.className = "random-square-container";
+        randomSquare.style.height = squareHeight + 'px';
+        randomSquare.style.width = squareWidth + 'px';
+        randomSquare.style.left = squareLeft + 'px';
+        randomSquare.style.top = squareTop + 'px';
+        document.getElementById("mainContainer").appendChild(randomSquare); 
+    }   
+}
+
 // load app
 function loadApp() {
+    createRandomArtsySquares();
     tickClockForRandomGeneriation();
     setSection(ART_SECTION, CLOSED);
     setSection(CODE_SECTION, CLOSED);
     setSection(HACKS_SECTION, CLOSED);
 }
+
+function )=
