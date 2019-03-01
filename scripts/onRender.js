@@ -145,5 +145,3 @@ function loadApp() {
     setSection(CODE_SECTION, CLOSED);
     setSection(HACKS_SECTION, CLOSED);
 }
-
-function )=
