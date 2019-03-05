@@ -45,9 +45,6 @@ section {
   background: white;
 }
 
-/* section:nth-child(odd) {
-  background: rgba(100, 100, 100, 0.5);
-} */
 
 .content-container {
   display: flex;
@@ -62,7 +59,6 @@ section {
   height: 90%;
   width: 90%;
   background-color: rgb(30, 200, 251);
-  /* background-color: rgb(66, 37, 92); */
   overflow: hidden;
   color: white;
   z-index: 1;
@@ -78,14 +74,15 @@ section {
   width: 60%;
   float:right;
   background: black;
-  /* background: black url('yop.jpg') center top no-repeat; */
+  background: black url('yop.jpg') center top no-repeat;
   background-size: cover;
-  /* shape-outside: polygon(0 0, 100% 0, 100% 100%, 30% 100%); */
   shape-margin: 20px;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
-  /* shape-outside: url('yop.jpg'); */
   shape-image-threshold: 0.5;
   shape-outside: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+  /* -webkit-box-shadow: inset 20px -20px 0px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 20px -20px 0px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 20px -20px 0px 0px rgba(0,0,0,0.75); */
 }
 
 .visible {
@@ -96,10 +93,16 @@ section {
   position: fixed;
   bottom: 10px;
   right: 2rem;
-  z-index: 0;
+  z-index: 100;
   border: 1px solid black;
   height: 100px;
   width: 200px;
+}
+
+.random-square-container {
+  position: fixed;
+  z-index: 0;
+  border: 1px solid black;
 }
 
 h1 {
