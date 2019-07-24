@@ -1,0 +1,203 @@
+#main>#home {
+  background: tomato;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  position: relative;
+
+  --normal-animation: 750ms;
+
+  --cartoon-width: 200px;
+  --action-width: 120px;
+  --info-width: 600px;
+  --popup-z-index: 10;
+  --popup-width: 400px;
+  --popup-height: 500px;
+}
+
+.title {
+  font-size: 5rem;
+}
+
+/* cartoon */
+
+.cartoon {
+  position: absolute;
+  width: var(--cartoon-width);
+  height: 300px;
+  border: 1px solid white;
+  transition: all 200ms ease-in-out;
+  right: 0px;
+  bottom: 0px;
+}
+
+.isRight {
+  right: 10px;
+}
+
+.isLeft {
+  right: calc(100vw - var(--cartoon-width) - 10px);
+}
+
+/* cartoon */
+
+/* globe */
+
+.globe {
+  position: relative;
+  top: -30px;
+  right: var(--cartoon-width);
+  background: white;
+  padding: 10px;
+  border: solid 1px black;
+  color: black;
+}
+
+.globe:after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+  clear: both;
+}
+
+.globe.isTalking:after {
+  animation: TWINKLE var(--normal-animation) infinite;
+}
+
+/* globe */
+
+/* actions */
+
+#actions {
+  position: absolute;
+  width: var(--action-width);
+  padding: 1rem;
+  border: 1px solid white;
+  top: 20px;
+  right: 30px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  color: tomato;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#actions>span {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+#actions > span {
+  animation:GROW-N-SHRINK infinite 500ms;
+}
+span.block {
+  background: white;
+  font-size: 1.2rem;
+}
+span.block:hover {
+  cursor: pointer;
+  color: red;
+  transition: color 350ms;
+}
+#actions > span.block:nth-child(2) { animation-delay: .25s }
+#actions > span.block:nth-child(3) { animation-delay: .30s }
+#actions > span.block:nth-child(4) { animation-delay: .12s }
+
+
+/* actions */
+
+/* info */
+
+#info {
+  width: var(--info-width);
+  border: solid 1px white;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+#info.animated {
+  animation: HOVER var(--normal-animation) infinite linear;
+}
+
+.container {
+  padding: 10px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+/* info */
+
+/* footer */
+
+.footer {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.link {
+  margin-right: 5px;
+}
+
+/* footer */
+
+/* popup */
+
+.popup {
+  /* display: none; */
+  width: var(--popup-width);
+  height: var(--popup-height);
+  z-index: var(--popup-z-index);
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.popup.animated-rightShadow {
+  animation: HOVER-SHADOW var(--normal-animation) infinite;
+}
+
+.popup>.closeButton {
+  position: absolute;
+  top: 2px;
+  left: 15px;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.popup>.band-info {
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+}
+
+.popup>.band-info>.mainImage {
+  width: 100%;
+  height: auto;
+}
+
+.popup>.band-info>.info-container {
+  width: calc(100% - 2rem);
+  padding: 1rem;
+}
+
+/* popup */
+
+.right-shadow {
+  -webkit-box-shadow: 15px 15px 0px 3px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 15px 15px 0px 3px rgba(255, 255, 255, 1);
+  box-shadow: 15px 15px 0px 3px rgba(255, 255, 255, 1);
+}

@@ -1,0 +1,49 @@
+#main {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+}
+.parallax-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1200px;
+  width: 900px;
+  overflow: hidden;
+  background: red;
+  background-image: url('./assets/fondo.png');
+}
+
+.capa {
+  width: 80%;
+  height: 80%;
+  background: rgba(10, 50, 40, 0.5)
+}
+
+.capa > .capa-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#scene {
+  height: 50%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.fish-container {
+  width: 300px;
+  height: auto;
+  align-self: center;
+}
+.fish-container > img {
+  width: 100%;
+  height: auto;
+}
