@@ -84,9 +84,10 @@ const Books = (props) => {
   return (
     <div>
       {
-        InfoJSON['art']['books'].map(book => {
+        InfoJSON['art']['books'].map((book, index) => {
           return book.name !== 'undefined' && (
             <Item
+              index={index}
               name={book.name}
               onClickFunction={openBook} />
           )
@@ -98,6 +99,7 @@ const Books = (props) => {
 
 const BandPopUp = (props) => {
   const {
+    whatIs,
     willShow,
     band: {
       name,
@@ -119,20 +121,17 @@ const BandPopUp = (props) => {
       {
         name !== 'undefined' &&
         <div
-          className="band popup">
+          className={`band popup ${whatIs}`}
+          style={{backgroundImage: `url(${main_image})`}}>
           <div
             className="closeButton"
             onClick={() => { closeBandPopUp() }}>
             x
-        </div>
+          </div>
           <div className="band-info">
-            <img className="mainImage" src={main_image} />
             <div className="info-container">
               <h2>{name}</h2>
               <p>{text}</p>
-              <div>
-                #todo images
-            </div>
             </div>
           </div>
         </div>
@@ -162,7 +161,7 @@ const InfoJSON = {
   },
   story: {
     1: {
-      title: 'maar.',
+      title: 'animation tutorial.',
       subtitle: 'front-end developer',
       text: [
         '16 februrary 1995',
@@ -181,9 +180,9 @@ const InfoJSON = {
         left: 100,
         top: 80,
         textColor: '#000',
-        text: 'yeehaw  carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf asdf asdff ',
+        text: 'an emo band i made with berny and adrián',
         bandcamp: '',
-        main_image: 'https://via.placeholder.com/300',
+        main_image: './assets/profile_whalecoma.jpg',
         images: []
       },
       {
@@ -192,14 +191,13 @@ const InfoJSON = {
         left: 150,
         top: 300,
         textColor: '#000',
-        text: '',
+        text: 'my personal project, hope this could be a full band tho',
         bandcamp: '',
-        main_image: '',
+        main_image: './assets/profile_perdidos.jpg',
         images: []
       }
     ],
     books: [
-
       {
         name: 'undefined'
       },
@@ -209,7 +207,7 @@ const InfoJSON = {
         textColor: '#000',
         text: 'a bummer poetry zine',
         bandcamp: '',
-        main_image: '',
+        main_image: './assets/profile_basura.jpg',
         images: []
       }
     ]
@@ -306,19 +304,19 @@ class Main extends React.Component {
       popups: {
         codes: {
           state: false,
-          activeIndex: 0 
+          activeIndex: 0
         },
         bands: {
           state: false,
-          activeIndex: 0 
+          activeIndex: 0
         },
         books: {
           state: false,
-          activeIndex: 0 
+          activeIndex: 0
         },
         paintings: {
           state: false,
-          activeIndex: 0 
+          activeIndex: 0
         },
       },
       containers: {
@@ -331,8 +329,11 @@ class Main extends React.Component {
   }
 
   openBand(index) {
-    console.log('whatakej ', index, 'ou yea');
     this.openPopUp(index, 'bands');
+  }
+
+  openBook(index) {
+    this.openPopUp(index, 'books');
   }
 
   openPopUp(index, popup) {
@@ -345,7 +346,7 @@ class Main extends React.Component {
     };
     this.setState({ popups: newPopups });
   }
-  
+
   closePopUp(popup) {
     const newPopups = {
       ...this.state.popups,
@@ -356,9 +357,6 @@ class Main extends React.Component {
     };
     this.setState({ popups: newPopups });
   }
-  // openBook(book) {
-  //   console.log('wich book will open', book)
-  // }
 
   toggleContainer(container) {
     const newContainers = {
@@ -375,7 +373,12 @@ class Main extends React.Component {
         <div id="home">
           <BandPopUp
             band={InfoJSON['art']['bands'][popups['bands']['activeIndex']]}
+            whatIs="band"
             closeFunction={() => { this.closePopUp('bands') }} />
+          <BandPopUp
+            band={InfoJSON['art']['books'][popups['books']['activeIndex']]}
+            whatIs="book"
+            closeFunction={() => { this.closePopUp('books') }} />
           <Info infojson={InfoJSON['story'][willSayPart]} />
           <div>
             {
@@ -384,7 +387,7 @@ class Main extends React.Component {
           </div>
           <div>
             {
-              containers['books'] && <Books openBook={(book) => this.openBook(book)} />
+              containers['books'] && <Books openBook={(index) => this.openBook(index)} />
             }
           </div>
           <Actions toggleContainer={(container) => this.toggleContainer(container)} />

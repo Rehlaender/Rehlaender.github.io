@@ -11,10 +11,11 @@
   --action-width: 120px;
   --info-width: 600px;
   --popup-width: 400px;
-  --popup-height: 500px;
+  --popup-height: 300px;
   
   
   /* Z INDEXS */
+  --closeButton-z-index: 30;
   --popup-z-index: 20;
   --items-z-index: 10;
 
@@ -170,6 +171,14 @@ h1 {
   left: 50px;
   background: tomato;
   border: 1px solid white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; /* Center the image */
+}
+
+.popup.book {
+  top: 100px;
+  left: 200px;
 }
 
 .popup.animated-rightShadow {
@@ -179,18 +188,20 @@ h1 {
 .popup>.closeButton {
   position: absolute;
   top: 2px;
-  left: 15px;
+  right: 15px;
   font-size: 3rem;
   font-weight: bold;
   cursor: pointer;
+  z-index: var(--closeButton-z-index)
 }
 
 
 
 .popup>.band-info {
-  overflow-y: scroll;
   height: 100%;
   width: 100%;
+  position: relative;
+  background: rgba(0,0,0,0.6);
 }
 
 .popup>.band-info>.mainImage {
@@ -201,6 +212,9 @@ h1 {
 .popup>.band-info>.info-container {
   width: calc(100% - 2rem);
   padding: 1rem;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
 }
 
 /* popup */
