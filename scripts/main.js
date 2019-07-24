@@ -7,8 +7,98 @@ const Globe = (props) => {
       className="globe">{text}</div>
   )
 }
+
+class Item extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      left: 0,
+      top: 0,
+      isMouseHovering: false,
+    };
+  }
+
+  componentWillMount() {
+    console.log(window.innerHeight, window.innerWidth, 'jej')
+    const innerHeight = window.innerHeight - 50;
+    const innerWidth = window.innerWidth - 300;
+    const randomTop = Math.floor(Math.random() * innerHeight) + 1;
+    const randomLeft = Math.floor(Math.random() * innerWidth) + 1;
+    this.setState({ left: randomLeft, top: randomTop });
+
+    const superThis = this;
+    setInterval(() => {
+      const superinnerHeight = window.innerHeight - 50;
+      const superinnerWidth = window.innerWidth - 300;
+      const superrandomTop = Math.floor(Math.random() * superinnerHeight) + 1;
+      const superrandomLeft = Math.floor(Math.random() * superinnerWidth) + 1;
+      superThis.setState({ left: superrandomLeft, top: superrandomTop });
+    }, 2000);
+  }
+
+  onMouseEnterHandler() {
+    this.setState({ isMouseHovering: true });
+
+  }
+
+  onMouseLeaveHandler() {
+    this.setState({ isMouseHovering: false });
+  }
+
+  render() {
+    const { name, onClickFunction, index } = this.props;
+    const { left, top } = this.state;
+    return (
+      <div className={"absoluteitem animated"}
+        onMouseEnter={() => this.onMouseEnterHandler()}
+        onMouseLeave={() => this.onMouseLeaveHandler()}
+        onClick={() => { onClickFunction(index) }}
+        style={{ top: `${top}px`, left: `${left}px` }}>
+        {name}
+      </div>
+    )
+  }
+}
+
+const Bands = (props) => {
+  const { openBand } = props;
+  return (
+    <div>
+      {
+        InfoJSON['art']['bands'].map((band, index) => {
+          return band.name !== 'undefined' && (
+            <Item
+              index={index}
+              name={band.name}
+              onClickFunction={openBand} />
+          )
+        })
+      }
+    </div>
+  )
+}
+
+const Books = (props) => {
+  const { openBook } = props;
+  return (
+    <div>
+      {
+        InfoJSON['art']['books'].map(book => {
+          return book.name !== 'undefined' && (
+            <Item
+              name={book.name}
+              onClickFunction={openBook} />
+          )
+        })
+      }
+    </div>
+  )
+}
+
 const BandPopUp = (props) => {
   const {
+    willShow,
     band: {
       name,
       backgroundColor,
@@ -72,11 +162,11 @@ const InfoJSON = {
   },
   story: {
     1: {
-      title: 'animation tutorial.',
+      title: 'maar.',
       subtitle: 'front-end developer',
       text: [
         '16 februrary 1995',
-        'bored guy always having fun'
+        'bored guy, always having fun'
       ]
     }
   },
@@ -88,6 +178,8 @@ const InfoJSON = {
       {
         name: 'whalecoma',
         backgroundColor: '#ADD8E6',
+        left: 100,
+        top: 80,
         textColor: '#000',
         text: 'yeehaw  carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf carnal asdfasdfhaskdj asdf asdf asdf asdf asdf asdf asdf asdff ',
         bandcamp: '',
@@ -97,6 +189,8 @@ const InfoJSON = {
       {
         name: 'perdidos en el mar',
         backgroundColor: '',
+        left: 150,
+        top: 300,
         textColor: '#000',
         text: '',
         bandcamp: '',
@@ -106,6 +200,18 @@ const InfoJSON = {
     ],
     books: [
 
+      {
+        name: 'undefined'
+      },
+      {
+        name: 'basura que se cree poesía',
+        backgroundColor: '',
+        textColor: '#000',
+        text: 'a bummer poetry zine',
+        bandcamp: '',
+        main_image: '',
+        images: []
+      }
     ]
   },
   code: {
@@ -132,7 +238,6 @@ const InfoJSON = {
   }
 };
 
-
 const Info = (props) => {
   const {
     infojson: { title, subtitle, text }
@@ -155,14 +260,15 @@ const Info = (props) => {
 }
 
 const Actions = (props) => {
+  const { toggleContainer } = props;
   return (
     <div
       id="actions"
       className={['action-container animated']}>
-      <span className="block">codes</span>
-      <span className="block">bands</span>
-      <span className="block">books</span>
-      <span className="block">paintings</span>
+      <span onClick={() => toggleContainer('codes')} className="block">codes</span>
+      <span onClick={() => toggleContainer('bands')} className="block">bands</span>
+      <span onClick={() => toggleContainer('books')} className="block">books</span>
+      <span onClick={() => toggleContainer('paintings')} className="block">paintings</span>
     </div>
   )
 }
@@ -197,19 +303,91 @@ class Main extends React.Component {
       willSay: 'jenlo im maar and everything is asom',
       willSayPart: 1,
       bandId: 0,
+      popups: {
+        codes: {
+          state: false,
+          activeIndex: 0 
+        },
+        bands: {
+          state: false,
+          activeIndex: 0 
+        },
+        books: {
+          state: false,
+          activeIndex: 0 
+        },
+        paintings: {
+          state: false,
+          activeIndex: 0 
+        },
+      },
+      containers: {
+        codes: false,
+        bands: false,
+        books: false,
+        paintings: false,
+      }
     };
   }
 
+  openBand(index) {
+    console.log('whatakej ', index, 'ou yea');
+    this.openPopUp(index, 'bands');
+  }
+
+  openPopUp(index, popup) {
+    const newPopups = {
+      ...this.state.popups,
+      [popup]: {
+        state: true,
+        activeIndex: index
+      }
+    };
+    this.setState({ popups: newPopups });
+  }
+  
+  closePopUp(popup) {
+    const newPopups = {
+      ...this.state.popups,
+      [popup]: {
+        state: false,
+        activeIndex: 0
+      }
+    };
+    this.setState({ popups: newPopups });
+  }
+  // openBook(book) {
+  //   console.log('wich book will open', book)
+  // }
+
+  toggleContainer(container) {
+    const newContainers = {
+      ...this.state.containers,
+      [container]: !this.state.containers[container]
+    };
+    this.setState({ containers: newContainers });
+  }
+
   render() {
-    const { position, willSayPart, willSay, bandId } = this.state;
+    const { position, willSayPart, willSay, bandId, containers, popups } = this.state;
     return (
       <div id="main">
         <div id="home">
           <BandPopUp
-            band={InfoJSON['art']['bands'][bandId]}
-            closeFunction={() => { console.log('closed') }} />
+            band={InfoJSON['art']['bands'][popups['bands']['activeIndex']]}
+            closeFunction={() => { this.closePopUp('bands') }} />
           <Info infojson={InfoJSON['story'][willSayPart]} />
-          <Actions />
+          <div>
+            {
+              containers['bands'] && <Bands openBand={(index) => this.openBand(index)} />
+            }
+          </div>
+          <div>
+            {
+              containers['books'] && <Books openBook={(book) => this.openBook(book)} />
+            }
+          </div>
+          <Actions toggleContainer={(container) => this.toggleContainer(container)} />
           <Cartoon
             applyRef={this.cartoonRef}
             className={position}

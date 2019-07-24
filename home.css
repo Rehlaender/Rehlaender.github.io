@@ -10,9 +10,14 @@
   --cartoon-width: 200px;
   --action-width: 120px;
   --info-width: 600px;
-  --popup-z-index: 10;
   --popup-width: 400px;
   --popup-height: 500px;
+  
+  
+  /* Z INDEXS */
+  --popup-z-index: 20;
+  --items-z-index: 10;
+
 }
 
 .title {
@@ -157,13 +162,14 @@ h1 {
 /* popup */
 
 .popup {
-  /* display: none; */
   width: var(--popup-width);
   height: var(--popup-height);
   z-index: var(--popup-z-index);
   position: absolute;
   top: 50px;
   left: 50px;
+  background: tomato;
+  border: 1px solid white;
 }
 
 .popup.animated-rightShadow {
@@ -176,7 +182,10 @@ h1 {
   left: 15px;
   font-size: 3rem;
   font-weight: bold;
+  cursor: pointer;
 }
+
+
 
 .popup>.band-info {
   overflow-y: scroll;
@@ -200,4 +209,33 @@ h1 {
   -webkit-box-shadow: 15px 15px 0px 3px rgba(255, 255, 255, 1);
   -moz-box-shadow: 15px 15px 0px 3px rgba(255, 255, 255, 1);
   box-shadow: 15px 15px 0px 3px rgba(255, 255, 255, 1);
+}
+
+.absoluteitem {
+  position: absolute;
+  z-index: var(--items-z-index);
+  font-size: 1.2rem;
+  background: white;
+  color: tomato;
+  padding: 1rem;
+  border: solid 1px black;
+  cursor: pointer;
+}
+
+.absoluteitem.animated {
+  transition: color ease-in 300ms, top linear 5.5s, left linear 5.5s;
+}
+.absoluteitem:hover {
+  color: white;
+  background: tomato;
+  cursor: pointer;
+  /* transition: color 300ms ease-in-out;  */
+}
+
+a {
+  color: lightgray;
+}
+
+a:hover, a:visited {
+  color: lightgray;
 }
