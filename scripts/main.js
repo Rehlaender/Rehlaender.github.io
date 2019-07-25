@@ -1,5 +1,52 @@
 'use strict';
 
+const KEYS = {
+  BAND: 'BAND',
+  BOOK: 'BOOK',
+  CODE: 'CODE',
+  PAINT: 'PAINT',
+};
+
+const PROYECTS = [
+  {
+    name: 'whalecoma',
+    text: 'an emo band i made with berny and adrián',
+    bandcamp: '',
+    spotify: '',
+    main_image: './assets/profile_whalecoma.jpg',
+    type: KEYS.BAND,
+  },
+  {
+    name: 'perdidos en el mar',
+    text: 'my personal project, hope this could be a full band tho',
+    bandcamp: '',
+    main_image: './assets/profile_perdidos.jpg',
+    type: KEYS.BAND,
+  },
+  {
+    name: 'basura que se cree poesía',
+    text: 'a bummer poetry zine',
+    download: '',
+    link: '',
+    main_image: './assets/profile_basura.jpg',
+    type: KEYS.BOOK
+  },
+  {
+    name: 'redux/thunk app',
+    text: 'an example app using redux/thunk',
+    deploy: 'https://rehlaender.github.io/react-portfolio/',
+    link: 'https://github.com/Rehlaender/react-portfolio',
+    type: KEYS.CODE
+  },
+  {
+    name: 'sassy-pokedex',
+    text: 'just showing css animations and promises by consuming the pokemon api',
+    deploy: 'https://rehlaender.github.io/sassy-pokedex/',
+    link: 'https://github.com/Rehlaender/sassy-pokedex',
+    type: KEYS.CODE
+  }
+];
+
 const Globe = (props) => {
   let { text } = props;
   return (
@@ -20,7 +67,6 @@ class Item extends React.Component {
   }
 
   componentWillMount() {
-    console.log(window.innerHeight, window.innerWidth, 'jej')
     const innerHeight = window.innerHeight - 50;
     const innerWidth = window.innerWidth - 300;
     const randomTop = Math.floor(Math.random() * innerHeight) + 1;
@@ -53,20 +99,23 @@ class Item extends React.Component {
       <div className={"absoluteitem animated"}
         onMouseEnter={() => this.onMouseEnterHandler()}
         onMouseLeave={() => this.onMouseLeaveHandler()}
-        onClick={() => { onClickFunction(index) }}
+        onClick={() => { onClickFunction(name) }}
         style={{ top: `${top}px`, left: `${left}px` }}>
         {name}
+        <div className="absolute-loader">
+          <span className="loading-word">loading</span>
+        </div>
       </div>
     )
   }
 }
 
 const Bands = (props) => {
-  const { openBand } = props;
+  const { infoArray, openBand } = props;
   return (
     <div>
       {
-        InfoJSON['art']['bands'].map((band, index) => {
+        infoArray.map((band, index) => {
           return band.name !== 'undefined' && (
             <Item
               index={index}
@@ -99,6 +148,7 @@ const Books = (props) => {
 
 const BandPopUp = (props) => {
   const {
+    index,
     whatIs,
     willShow,
     band: {
@@ -116,13 +166,23 @@ const BandPopUp = (props) => {
     props.closeFunction();
   }
 
+  const innerHeight = window.innerHeight - 200;
+  const innerWidth = window.innerWidth - 400;
+  const randomTop = Math.floor(Math.random() * innerHeight) + 1;
+  const randomLeft = Math.floor(Math.random() * innerWidth) + 1;
+
   return (
     <div>
       {
         name !== 'undefined' &&
         <div
           className={`band popup ${whatIs}`}
-          style={{backgroundImage: `url(${main_image})`}}>
+          style={{
+            backgroundImage: `url(${main_image})`,
+            left: randomLeft,
+            top: randomTop,
+            zIndex: `${index + 20} `
+          }}>
           <div
             className="closeButton"
             onClick={() => { closeBandPopUp() }}>
@@ -222,13 +282,13 @@ const InfoJSON = {
     deployedProjects: [
       {
         name: 'redux/thunk app',
-        description: 'an example app using redux/thunk',
+        text: 'an example app using redux/thunk',
         deploy: 'https://rehlaender.github.io/react-portfolio/',
         github: 'https://github.com/Rehlaender/react-portfolio',
       },
       {
         name: 'sassy-pokedex',
-        description: 'just showing css animations and promises by consuming the pokemon api',
+        text: 'just showing css animations and promises by consuming the pokemon api',
         deploy: 'https://rehlaender.github.io/sassy-pokedex/',
         github: 'https://github.com/Rehlaender/sassy-pokedex'
       }
@@ -301,6 +361,7 @@ class Main extends React.Component {
       willSay: 'jenlo im maar and everything is asom',
       willSayPart: 1,
       bandId: 0,
+      activePopups: [],
       popups: {
         codes: {
           state: false,
@@ -328,23 +389,24 @@ class Main extends React.Component {
     };
   }
 
-  openBand(index) {
-    this.openPopUp(index, 'bands');
+  openBand(name) {
+    this.openPopUp(name);
   }
 
   openBook(index) {
     this.openPopUp(index, 'books');
   }
 
-  openPopUp(index, popup) {
-    const newPopups = {
-      ...this.state.popups,
-      [popup]: {
-        state: true,
-        activeIndex: index
-      }
-    };
-    this.setState({ popups: newPopups });
+  openPopUp(name) {
+    const isNameAlreadyThere = this.state.activePopups.some(proyect => proyect.name === name)
+    const addProyect = PROYECTS.find(proyect => proyect.name === name);
+    const withoutProyect = this.state.activePopups.filter(proyect => proyect.name !== name);
+    const addPopups = isNameAlreadyThere ?
+    withoutProyect : [
+      ...this.state.activePopups,
+      addProyect
+    ];
+    this.setState({ activePopups: addPopups });
   }
 
   closePopUp(popup) {
@@ -358,6 +420,11 @@ class Main extends React.Component {
     this.setState({ popups: newPopups });
   }
 
+  closePopUpByName(popUpName) {
+    const filteredPopups = this.state.activePopups.filter(popup => popup.name !== popUpName); 
+    this.setState({ activePopups: filteredPopups });
+  }
+
   toggleContainer(container) {
     const newContainers = {
       ...this.state.containers,
@@ -367,22 +434,43 @@ class Main extends React.Component {
   }
 
   render() {
-    const { position, willSayPart, willSay, bandId, containers, popups } = this.state;
+    const rendereableInfo = {
+      bands: [
+        ...PROYECTS.filter(item => item['type'] === KEYS.BAND)
+      ],
+      books: [
+        ...PROYECTS.filter(item => item['type'] === KEYS.BOOK)
+      ],
+      codes: [
+        ...PROYECTS.filter(item => item['type'] === KEYS.CODE)
+      ],
+      paintings: [
+        ...PROYECTS.filter(item => item['type'] === KEYS.PAINT)
+      ],
+    };
+
+    console.log('rendereableInfo', rendereableInfo);
+    const { activePopups, position, willSayPart, willSay, bandId, containers, popups } = this.state;
     return (
       <div id="main">
         <div id="home">
-          <BandPopUp
-            band={InfoJSON['art']['bands'][popups['bands']['activeIndex']]}
-            whatIs="band"
-            closeFunction={() => { this.closePopUp('bands') }} />
-          <BandPopUp
-            band={InfoJSON['art']['books'][popups['books']['activeIndex']]}
-            whatIs="book"
-            closeFunction={() => { this.closePopUp('books') }} />
+          {
+            activePopups && activePopups.map((popup, index) => {
+              return (
+                <BandPopUp
+                  band={popup}
+                  index={index}
+                  whatIs={popup.type}
+                  closeFunction={() => { this.closePopUpByName(popup.name) }} />
+              )
+            })
+          }
           <Info infojson={InfoJSON['story'][willSayPart]} />
           <div>
             {
-              containers['bands'] && <Bands openBand={(index) => this.openBand(index)} />
+              containers['bands'] && <Bands
+                infoArray={rendereableInfo.bands} 
+                openBand={(index) => this.openBand(index)} />
             }
           </div>
           <div>
