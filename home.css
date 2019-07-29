@@ -100,21 +100,23 @@
   width: 100%;
 }
 
-#actions > span {
+/* #actions > span {
   animation:GROW-N-SHRINK infinite 500ms;
-}
+} */
 span.block {
   background: white;
   font-size: 1.2rem;
+  transition: all linear 200ms;
 }
 span.block:hover {
   cursor: pointer;
   color: red;
   transition: color 350ms;
+  animation: GROW-TO-SHRINK forwards 500ms;
 }
-#actions > span.block:nth-child(2) { animation-delay: .25s }
+/* #actions > span.block:nth-child(2) { animation-delay: .25s }
 #actions > span.block:nth-child(3) { animation-delay: .30s }
-#actions > span.block:nth-child(4) { animation-delay: .12s }
+#actions > span.block:nth-child(4) { animation-delay: .12s } */
 
 
 /* actions */
@@ -241,6 +243,13 @@ h1 {
 .absoluteitem.animated {
   transition: color ease-in 300ms, top linear 5.5s, left linear 5.5s;
 }
+
+.absoluteitem.animated.hasBeenClicked {
+  background: black;
+  color: white;
+  transition: color ease-in 300ms, top linear 200ms, left linear 200ms;
+}
+
 .absoluteitem:hover {
   color: white;
   background: tomato;

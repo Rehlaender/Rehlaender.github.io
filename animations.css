@@ -37,15 +37,17 @@
   }
 }
 
-@keyframes GROW-N-SHRINK {
+@keyframes GROW-TO-SHRINK {
   0% {
     width: 100%;
+    padding-right: 0px;
   }
   50% {
     width: 80% 
   }
   100% {
-    width: 100%;
+    width: 80%;
+    padding-right: 5px;
   }
 }
 

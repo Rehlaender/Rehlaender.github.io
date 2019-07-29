@@ -34,6 +34,7 @@ const PROYECTS = [
   {
     name: 'redux/thunk app',
     text: 'an example app using redux/thunk',
+    main_image: './assets/profile_reactstuff.jpg',
     deploy: 'https://rehlaender.github.io/react-portfolio/',
     link: 'https://github.com/Rehlaender/react-portfolio',
     type: KEYS.CODE
@@ -41,6 +42,7 @@ const PROYECTS = [
   {
     name: 'sassy-pokedex',
     text: 'just showing css animations and promises by consuming the pokemon api',
+    main_image: './assets/profile_sassypokedex.jpg',
     deploy: 'https://rehlaender.github.io/sassy-pokedex/',
     link: 'https://github.com/Rehlaender/sassy-pokedex',
     type: KEYS.CODE
@@ -62,6 +64,7 @@ class Item extends React.Component {
     this.state = {
       left: 0,
       top: 0,
+      hasBeenClicked: 'noup',
       isMouseHovering: false,
     };
   }
@@ -79,7 +82,10 @@ class Item extends React.Component {
       const superinnerWidth = window.innerWidth - 300;
       const superrandomTop = Math.floor(Math.random() * superinnerHeight) + 1;
       const superrandomLeft = Math.floor(Math.random() * superinnerWidth) + 1;
-      superThis.setState({ left: superrandomLeft, top: superrandomTop });
+      const clickedTop = (superThis.props.index * 60) + 300;
+      superThis.state.hasBeenClicked === 'hasBeenClicked' ? 
+      superThis.setState({ left: 0, top: clickedTop })
+      : superThis.setState({ left: superrandomLeft, top: superrandomTop });
     }, 2000);
   }
 
@@ -92,14 +98,25 @@ class Item extends React.Component {
     this.setState({ isMouseHovering: false });
   }
 
+  clickToggler() {
+    if(this.state.hasBeenClicked !== 'hasBeenClicked') {
+      console.log('jelp me');
+      this.props.onClickFunction(this.props.name);
+      this.setState({hasBeenClicked: 'hasBeenClicked'});
+    } else {
+      this.setState({hasBeenClicked: 'noup'});
+    }
+  }
+
   render() {
     const { name, onClickFunction, index } = this.props;
-    const { left, top } = this.state;
+    const { left, top, hasBeenClicked } = this.state;
     return (
-      <div className={"absoluteitem animated"}
+      <div className={
+          `absoluteitem animated ${hasBeenClicked}`}
         onMouseEnter={() => this.onMouseEnterHandler()}
         onMouseLeave={() => this.onMouseLeaveHandler()}
-        onClick={() => { onClickFunction(name) }}
+        onClick={() => { this.clickToggler() }}
         style={{ top: `${top}px`, left: `${left}px` }}>
         {name}
         <div className="absolute-loader">
@@ -303,7 +320,7 @@ const Info = (props) => {
   return (
     <div
       id="info"
-      className={['info ' + 'right-shadow animated']}>
+      className={['info ' + 'right-shadow']}>
       <div className="container">
         <h1>{title}</h1>
         <h4>{subtitle}</h4>
@@ -449,7 +466,6 @@ class Main extends React.Component {
       ],
     };
 
-    console.log('rendereableInfo', rendereableInfo);
     const { activePopups, position, willSayPart, willSay, bandId, containers, popups } = this.state;
     return (
       <div id="main">
@@ -475,9 +491,23 @@ class Main extends React.Component {
           </div>
           <div>
             {
-              containers['books'] && <Books openBook={(index) => this.openBook(index)} />
+              containers['books'] && <Bands
+                infoArray={rendereableInfo.books} 
+                openBand={(index) => this.openBand(index)} />
             }
           </div>
+          <div>
+            {
+              containers['codes'] && <Bands
+                infoArray={rendereableInfo.codes} 
+                openBand={(index) => this.openBand(index)} />
+            }
+          </div>
+          {/* <div>
+            {
+              containers['books'] && <Books openBook={(index) => this.openBook(index)} />
+            }
+          </div> */}
           <Actions toggleContainer={(container) => this.toggleContainer(container)} />
           <Cartoon
             applyRef={this.cartoonRef}
