@@ -2,9 +2,8 @@ import React from 'react';
 import { Store } from './Store';
 
 import RenderModals from './components/RenderModals';
-import {Menu} from './components/Menu/Menu';
 
-import { addModalAction } from './Actions';
+import {Menu, Header, Footer} from './components';
 
 export default function App() {
   const { state, dispatch } = React.useContext(Store);
@@ -16,9 +15,11 @@ export default function App() {
   return (
     <React.Fragment>
       <div>
+        <Header />
         {JSON.stringify({message: 'jenlo', state})}
         <Menu />
         <RenderModals />
+        <Footer />
       </div>
     </React.Fragment>
   );

@@ -1,0 +1,12 @@
+.footer {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.link {
+  margin-right: 5px;
+}

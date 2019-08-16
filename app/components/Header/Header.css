@@ -1,0 +1,23 @@
+#info {
+  --info-width: 600px;
+
+  width: var(--info-width);
+  border: solid 1px white;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+#info.animated {
+  --normal-animation: 750ms;
+
+  animation: HOVER var(--normal-animation) infinite linear;
+}
+
+.container {
+  padding: 10px;
+}
+
+h1 {
+  font-size: 3rem;
+}
