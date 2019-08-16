@@ -1,4 +1,4 @@
-import {ADD_MODAL, REMOVE_MODAL, SET_ACTIVE_MENU} from '../actionTypes';
+import {ADD_MODAL, REMOVE_MODAL} from '../actionTypes';
 
 export const addModalAction = (modalId, dispatch) => {
   return dispatch({
@@ -14,10 +14,3 @@ export const removeModalAction = (modalId, dispatch) => {
     payload: modalId
   });
 };
-
-export const setActiveMenuAction = (menuName, dispatch) => {
-  return dispatch({
-    type: SET_ACTIVE_MENU,
-    payload: menuName
-  });
-}

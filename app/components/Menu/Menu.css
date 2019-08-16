@@ -13,6 +13,17 @@
   color: tomato;
   justify-content: center;
   align-items: flex-end;
+  overflow: hidden;
+}
+
+#menu>.springContainer {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  color: tomato;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
 }
 
 #menu>span {

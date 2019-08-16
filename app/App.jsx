@@ -15,8 +15,8 @@ export default function App() {
   return (
     <React.Fragment>
       <div>
-        <Header />
-        {JSON.stringify({message: 'jenlo', state})}
+        {/* <Header /> */}
+        {JSON.stringify(state)}
         <Menu />
         <RenderModals />
         <Footer />
