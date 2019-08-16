@@ -1,0 +1,16 @@
+.popup {
+  --popup-z-index: 20;
+  --popup-width: 400px;
+  --popup-height: 300px;
+
+  width: var(--popup-width);
+  height: var(--popup-height);
+  z-index: var(--popup-z-index);
+
+  background: tomato;
+  border: 1px solid white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all 500ms;
+}

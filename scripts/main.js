@@ -100,7 +100,6 @@ class Item extends React.Component {
 
   clickToggler() {
     if(this.state.hasBeenClicked !== 'hasBeenClicked') {
-      console.log('jelp me');
       this.props.onClickFunction(this.props.name);
       this.setState({hasBeenClicked: 'hasBeenClicked'});
     } else {

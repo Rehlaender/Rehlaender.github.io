@@ -1,17 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        jellow
-      </div>
-    )
-  }
-}
+import { StoreProvider } from './Store';
+
+import App from './App.jsx';
 
 ReactDOM.render(
-  <App />,
+  <StoreProvider>
+    <App/>
+  </StoreProvider>,
   document.getElementById('app')
 );
