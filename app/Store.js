@@ -1,14 +1,21 @@
 import React from 'react'
-import { ADD_MODAL, REMOVE_MODAL } from './actionTypes';
+import { ADD_MODAL, REMOVE_MODAL, SET_ACTIVE_MENU } from './actionTypes';
 
 export const Store = React.createContext();
 
 const initialState = {
+  activeMenu: '',
   activeModals: [],
 }
 
 function reducer(state, action) {
   switch (action.type) {
+    case SET_ACTIVE_MENU:
+      const setActiveMenu = state.activeMenu === action.payload ? '' : action.payload;
+      return {
+        ...state, 
+        activeMenu: setActiveMenu
+      };
     case ADD_MODAL:
       return { 
         ...state, 

@@ -1,5 +1,9 @@
 import {KEYS} from './keys';
 
+export const returnProyectsByType = (type) => {
+  return PROYECTS.filter(proyect => proyect.type === type);
+}
+
 export const PROYECTS = [
   {
     id: 1,

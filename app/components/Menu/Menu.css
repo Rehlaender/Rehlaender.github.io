@@ -1,0 +1,38 @@
+#menu {
+  --action-width: 120px;
+
+  position: absolute;
+  width: var(--action-width);
+  padding: 1rem;
+  border: 1px solid white;
+  top: 20px;
+  right: 30px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  color: tomato;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#menu>span {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+span.block {
+  background: white;
+  font-size: 1.2rem;
+  text-transform: lowercase;
+  transition: all linear 200ms;
+}
+span.block:hover {
+  cursor: pointer;
+  color: red;
+  transition: color 350ms;
+  animation: GROW-TO-SHRINK forwards 500ms;
+}
+
+.menu-items.active {
+  color: black;
+}
