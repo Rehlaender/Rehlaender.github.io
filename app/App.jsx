@@ -17,8 +17,8 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <div>
-        {/* <Header /> */}
+      <div className="mainApp">
+        <Header />
         <Menu />
         <RenderModals />
         <Secret />

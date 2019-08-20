@@ -6,18 +6,9 @@
   position: absolute;
   top: 50px;
   left: 50px;
+  transition: all 300ms ease-out;
 }
 
-#info.animated {
-  --normal-animation: 750ms;
-
-  animation: HOVER var(--normal-animation) infinite linear;
-}
-
-.container {
-  padding: 10px;
-}
-
-h1 {
-  font-size: 3rem;
+#info.isSecret {
+  opacity: 0;
 }

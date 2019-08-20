@@ -30,6 +30,7 @@
     "react-dom": "^16.8.6",
     "react-motion": "^0.5.2",
     "react-redux": "^7.1.0",
+    "react-typist": "^2.0.5",
     "redux": "^4.0.4",
     "reselect": "^4.0.0"
   },
