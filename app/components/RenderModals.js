@@ -5,6 +5,8 @@ import { Modal } from './Modal/Modal';
 
 import { PROYECTS } from '../constants/PROYECTS';
 
+import './RenderModals.css';
+
 export default function RenderModals() {
   const { state, dispatch } = React.useContext(Store);
 
@@ -17,8 +19,8 @@ export default function RenderModals() {
     {
       state.activeModals.length !== 0 ?
       (
-        <div>
-          JENLO MODALS =>
+        <div className="renderModals"
+          style={{opacity: state.menuState ? 1 : 0}}>
           {state.activeModals.map(
             (modal, i) => {
               return <Modal 
@@ -30,7 +32,7 @@ export default function RenderModals() {
           )}
         </div>
       ) : (
-        <div>no hay</div>
+        <div>Hello, welcome. You can check my proyects in the <strong>hamburguesa</strong> button</div>
       )
     }
 

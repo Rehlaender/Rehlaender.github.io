@@ -1,0 +1,34 @@
+.renderModals {
+  height: 75%;
+  width: 60%;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow-y: scroll;
+  transition: opacity 200ms linear;
+}
+
+/* width */
+.renderModals::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.renderModals::-webkit-scrollbar-track {
+  background: black; 
+}
+
+/* Handle */
+.renderModals::-webkit-scrollbar-thumb {
+  background: cyan; 
+}
+
+/* Handle on hover */
+.renderModals::-webkit-scrollbar-thumb:hover {
+  background: cyan; 
+}

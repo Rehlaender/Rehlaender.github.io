@@ -29,29 +29,23 @@ export const Modal = (props) => {
   const randomLeft = Math.floor(Math.random() * innerWidth) + 1;
 
   return (
-    <div>
-        <div
-          className={`band popup`}
-          style={{
-            // backgroundImage: `url(${main_image})`,
-            left: randomLeft,
-            top: randomTop,
-            zIndex: `${index + 20} `
-          }}>
-          <div
-            className="closeButton"
-            onClick={() => { closeBandPopUp() }}>
-            x
+    <div
+      className={`popup`}
+      style={{
+        backgroundImage: `url(${main_image})`,
+        zIndex: `${index + 20} `
+      }}>
+      <div
+        className="closeButton"
+        onClick={() => { closeBandPopUp() }}>
+        cerrar
           </div>
-          <div className="band-info">
-            <div className="info-container">
-              <h2>{name}</h2>
-              <p>{text}</p>
-            </div>
-          </div>
-          {JSON.stringify(props.data)}
-          jenlo {props.index}
+      <div className="info-container">
+        <div className="info">
+          <h2>{name}</h2>
+          <p>{text}</p>
         </div>
+      </div>
     </div>
   )
 }

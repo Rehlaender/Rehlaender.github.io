@@ -1,16 +1,42 @@
 .popup {
   --popup-z-index: 20;
-  --popup-width: 400px;
-  --popup-height: 300px;
-
-  width: var(--popup-width);
-  height: var(--popup-height);
+  width: 49%;
+  height: 200px;
   z-index: var(--popup-z-index);
 
-  background: tomato;
+  background: black;
   border: 1px solid white;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  transition: all 500ms;
+  transition: opacity 500ms linear, top 100ms linear;
+  position: relative;
+  margin-bottom: 5px;
+
+  animation: WELCOME 200ms ease-in-out forwards;
+}
+
+.popup>.info-container {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.popup>.closeButton {
+  cursor: pointer;
+  color: cyan;
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  right: 10px;
+}
+
+@keyframes WELCOME {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

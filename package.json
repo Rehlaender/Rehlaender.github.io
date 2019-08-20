@@ -10,7 +10,7 @@
     ]
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --open --port 5000",
     "create": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
