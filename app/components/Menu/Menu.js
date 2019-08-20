@@ -53,7 +53,7 @@ const HoveringItems = (props) => {
   }
 
   return (
-    <Motion style={{x: spring(state.activeMenu ? 0 : 400)}}>
+    <Motion style={{x: spring(state.isMenuAway ? 400 : 0)}}>
       {({x}) =>
         <div style={{
           WebkitTransform: `translate3d(${x}px, 0, 0)`,
@@ -78,7 +78,7 @@ const HoveringItems = (props) => {
 
 const ActionBlock = (props) => {
 
-  const { dispatch } = React.useContext(Store);
+  const { state, dispatch } = React.useContext(Store);
 
   const {name} = props;
   const toggleContainer = (menu) => {
@@ -86,6 +86,8 @@ const ActionBlock = (props) => {
   }
 
   return (
-    <span onClick={() => toggleContainer(name)} className="block">{name}</span>
+    <span onClick={() => toggleContainer(name)} className="block">
+      {name}
+    </span>
   )
 }
