@@ -10,3 +10,28 @@
 .link {
   margin-right: 5px;
 }
+
+.link> a {
+  color: cyan;
+  transition: all 200ms linear;
+}
+
+/* unvisited link */
+.link>a:link {
+  color: cyan;
+}
+
+/* visited link */
+.link>a:visited {
+  color: cyan;
+}
+
+/* mouse over link */
+.link>a:hover {
+  color: white;
+}
+
+/* selected link */
+.link>a:active {
+  color: cyan;
+}

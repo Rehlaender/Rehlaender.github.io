@@ -21,9 +21,23 @@ export const Menu = (props) => {
   return (
     <div
       id="menu"
-      className={['action-container animated']}>
+      className={[
+        state.menuState && 'isOpen ',
+        ' action-container animated'
+      ]}>
       
-      <div className="hamburguer" onClick={()=>{toggleMenu()}}>hamburguesa</div>
+      <Motion style={{x: spring(state.menuState ? -20 : 0)}}>
+        {({x}) =>
+          <div className="hamburguer" 
+            onClick={()=>{toggleMenu()}}
+            style={{
+              transform: `rotate(${x}deg)`,
+            }}>
+            hamburguesa
+        </div>
+        }
+      </Motion>
+
       <Motion style={{x: spring(state.menuState ? 0 : 400)}}>
         {({x}) =>  
           <div className="springContainer" style={{
@@ -86,8 +100,10 @@ const ActionBlock = (props) => {
   }
 
   return (
-    <span onClick={() => toggleContainer(name)} className="block">
+    <span onClick={() => toggleContainer(name)} 
+    className={[state.activeMenu === name && 'active ', ' block']}>
       {name}
+      <div className="blackLine"></div>
     </span>
   )
 }

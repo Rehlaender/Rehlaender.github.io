@@ -4,7 +4,7 @@ import { ADD_MODAL, REMOVE_MODAL, SET_ACTIVE_MENU, TOGGLE_MENU } from './actionT
 export const Store = React.createContext();
 
 const initialState = {
-  activeMenu: 'BAND',
+  activeMenu: '',
   activeModals: [],
   menuState: false,
   isMenuAway: true,
@@ -23,17 +23,18 @@ function reducer(state, action) {
     case SET_ACTIVE_MENU:
       const setActiveMenu = state.activeMenu === action.payload;
       const whatToDo = state.isMenuAway != true && setActiveMenu;
+      const toggleActiveMenu = setActiveMenu ? '' : action.payload;
       return {
         ...state, 
-        activeMenu: action.payload,
+        activeMenu: toggleActiveMenu,
         isMenuAway: whatToDo
       };
-    case TOGGLE_MENU:
-      const menuWillCloseSubMenu = !state.menuState === false;
+    case TOGGLE_MENU: 
       return {
         ...state, 
         menuState: !state.menuState,
-        isMenuAway: menuWillCloseSubMenu
+        isMenuAway: true,
+        activeMenu: '',
       };
     default:
       return state;

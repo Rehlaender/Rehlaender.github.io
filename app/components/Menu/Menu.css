@@ -4,7 +4,7 @@
   position: absolute;
   width: var(--action-width);
   padding: 1rem;
-  border: 1px solid white;
+  border: 0px solid white;
   top: 20px;
   right: 30px;
   text-align: right;
@@ -14,6 +14,11 @@
   justify-content: center;
   align-items: flex-end;
   overflow: hidden;
+  transition: border linear 200ms;
+}
+
+#menu.isOpen {
+  border: 1px solid white;
 }
 
 #menu>.springContainer {
@@ -32,11 +37,18 @@
 }
 
 span.block {
-  background: white;
+  background: cyan;
+  color: tomato;
   font-size: 1.2rem;
   text-transform: lowercase;
   transition: all linear 200ms;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2px;
 }
+
 span.block:hover {
   cursor: pointer;
   color: red;
@@ -44,15 +56,53 @@ span.block:hover {
   animation: GROW-TO-SHRINK forwards 500ms;
 }
 
-.menu-items.active {
+span.block.active {
+  font-size: 1.5rem;
+}
+
+span.block.active > .blackLine {
+  width: 100%;
+}
+ 
+.blackLine {
+  width: 0px;
+  height: 2px; 
+  background: tomato;
+  transition: width 250ms ease-in;
+}
+
+.menu-items {
+  cursor: pointer;
+  background: tomato;
   color: black;
+  transition: color ease-in-out 350ms, transform linear 200ms;
+  margin-bottom: 3px;
+  width: fit-content;
 }
 
-/* .active-arrow {
-  opacity: 0;
-  transition: all 300ms ease-in-out;
+.menu-items:hover {
+  color: #222;
 }
 
-.active-arrow.active {
-  opacity: 1;
-} */
+.menu-items.active {
+  color: cyan;
+  transform: rotate(-10deg);
+  margin-top: 10px;
+}
+.menu-items.active:nth-child(odd) {
+  transform: rotate(10deg);
+}
+
+.hamburguer {
+  cursor: pointer;
+  background: tomato;
+  color: cyan;
+}
+
+.hamburguer:hover {
+  color: white;
+}
+
+.hamburguer, span.block, .menu-items {
+  user-select: none;
+}
