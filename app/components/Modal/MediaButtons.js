@@ -30,9 +30,9 @@ export const MediaButtons = (props) => {
   }
 
   const buttonsIteration = (mediaLinks) => {
-    return transfromArrayIntoObjectByName(mediaLinks).map(link => {
+    return transfromArrayIntoObjectByName(mediaLinks).map((link, i) => {
       return (
-        <a className="media-icon" href={link.link}>{link.icon}</a>
+        <a className="media-icon" key={i} href={link.link}>{link.icon}</a>
       )
     })
   }
