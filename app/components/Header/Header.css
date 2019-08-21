@@ -15,6 +15,13 @@
   opacity: 0;
 }
 
+#info>.container>h1,
+#info>.container>h4,
+#info>.container>p,
+#info>.container>span  {
+  user-select: none;
+}
+
 #info>.container>h1 {
   font-size: 1.5rem;
 }
@@ -39,3 +46,68 @@ img.profilePicture:hover {
 img.profilePicture:active {
   cursor: grabbing;
 }
+
+.profile-container>.heart-container, 
+.profile-container>.heart-container>span,
+.profile-container>.profilePicture {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.heart-container {
+  background: toato;
+  position: absolute; 
+  left: 120px;
+  bottom: 60px;
+  animation: OPACITY 100ms linear forwards;
+}
+
+.heart {color: tomato;}
+
+@keyframes OPACITY {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.flyingheart-container {
+  position: absolute;
+  bottom: 60px;
+  left: 70px;
+  height: 10px;
+  width: 10px;
+}
+
+.flyingHeart {
+  position: absolute;
+  animation: FLY 1s linear forwards;
+  font-size: 1.5rem;
+  z-index: 100;
+  color: tomato;
+}
+
+@keyframes FLY {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-5px, -20px);
+  }
+  40% {
+    transform: translate(5px, -30px);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-3px, -90px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0px, -100px);
+  }
+}
+

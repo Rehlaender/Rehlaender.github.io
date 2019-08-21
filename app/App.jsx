@@ -6,8 +6,6 @@ import RenderModals from './components/RenderModals';
 import {Menu, Header, Footer} from './components';
 import Secret from './components/Secret/Secret';
 
-import * as centerImage from "../assets/casa_bajo.png";
-
 export default function App() {
   const { state, dispatch } = React.useContext(Store);
 
