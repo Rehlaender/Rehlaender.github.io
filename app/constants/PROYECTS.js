@@ -4,6 +4,10 @@ export const returnProyectsByType = (type) => {
   return PROYECTS.filter(proyect => proyect.type === type);
 }
 
+export const returnProyectIds = () => {
+  return PROYECTS.map(proyect => proyect.id);
+}
+
 export const PROYECTS = [
   {
     id: 1,

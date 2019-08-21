@@ -2,10 +2,11 @@ import React from 'react'
 import { 
   ADD_MODAL,
   CLOSE_ALL,
+  OPEN_ALL,
   REMOVE_MODAL, 
   SET_ACTIVE_MENU, 
   TOGGLE_MENU } from './actionTypes';
-
+import {returnProyectIds} from './constants/PROYECTS';
 export const Store = React.createContext();
 
 const initialState = {
@@ -26,6 +27,11 @@ function reducer(state, action) {
       return {
         ...state, 
         activeModals: []
+      };
+    case OPEN_ALL: 
+      return {
+        ...state, 
+        activeModals: [...returnProyectIds()]
       };
     case REMOVE_MODAL:
       const removeModal = state.activeModals.filter(id => id !== action.payload);

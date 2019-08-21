@@ -5,6 +5,7 @@ import { KEYS } from '../../constants/KEYS';
 import { returnProyectsByType } from '../../constants/PROYECTS';
 
 import {CloseAll} from './CloseAll';
+import {OpenAll} from './OpenAll';
 
 import {Motion, spring} from 'react-motion';
 
@@ -39,6 +40,7 @@ export const Menu = (props) => {
       </Motion>
       
       <CloseAll />
+      <OpenAll />
       
       <Motion style={{x: spring(state.menuState ? 0 : 400)}}>
         {({x}) =>  
