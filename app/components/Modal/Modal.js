@@ -2,6 +2,8 @@ import React from 'react';
 import { Store } from '../../Store';
 import { removeModalAction } from '../../actions';
 
+import {MediaButtons} from './MediaButtons';
+
 import './Modal.css';
 
 export const Modal = (props) => {
@@ -23,11 +25,6 @@ export const Modal = (props) => {
     removeModalAction(id, dispatch);
   }
 
-  const innerHeight = window.innerHeight - 200;
-  const innerWidth = window.innerWidth - 400;
-  const randomTop = Math.floor(Math.random() * innerHeight) + 1;
-  const randomLeft = Math.floor(Math.random() * innerWidth) + 1;
-
   return (
     <div
       className={`popup`}
@@ -45,6 +42,7 @@ export const Modal = (props) => {
           <h2>{name}</h2>
           <p>{text}</p>
         </div>
+        <MediaButtons links={links} />
       </div>
     </div>
   )

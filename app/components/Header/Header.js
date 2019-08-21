@@ -4,6 +4,7 @@ import { Store } from '../../Store';
 
 import {INFO} from '../../constants/INFO';
 import './Header.css';
+import profilePicture from '../../../assets/user.png';
 
 export const Header = (props) => {
   const { state, dispatch } = React.useContext(Store);
@@ -26,6 +27,12 @@ export const Header = (props) => {
             return <p key={i}>{element}</p>
           })
         }
+        <img 
+          className="profilePicture"
+          src={profilePicture}
+          alt="yeah, i look like that"
+          title="yeah, i look like that"
+        />
       </div>
     </div>
   )

@@ -106,3 +106,26 @@ span.block.active > .blackLine {
 .hamburguer, span.block, .menu-items {
   user-select: none;
 }
+
+#closeAll {
+  position: absolute;
+  left: 10px;
+  top: 60px;
+  background: cyan;
+  color: tomato;
+  text-decoration: underline;
+  cursor: pointer;
+  animation: RENDER_OPACITY forwards 200ms linear;
+}
+
+@keyframes RENDER_OPACITY {
+  from {
+    opacity: 0;
+    top: 100px;
+  }
+  to {
+    opacity: 1;
+    transform: rotate(25deg);
+    top: 60px;
+  }
+}

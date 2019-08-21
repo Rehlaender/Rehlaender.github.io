@@ -4,8 +4,9 @@ import { setActiveMenuAction, addModalAction, removeModalAction, toggleMenuActio
 import { KEYS } from '../../constants/KEYS';
 import { returnProyectsByType } from '../../constants/PROYECTS';
 
-import {Motion, spring} from 'react-motion';
+import {CloseAll} from './CloseAll';
 
+import {Motion, spring} from 'react-motion';
 
 import './Menu.css';
 
@@ -25,7 +26,6 @@ export const Menu = (props) => {
         state.menuState && 'isOpen ',
         ' action-container animated'
       ]}>
-      
       <Motion style={{x: spring(state.menuState ? -20 : 0)}}>
         {({x}) =>
           <div className="hamburguer" 
@@ -37,7 +37,9 @@ export const Menu = (props) => {
         </div>
         }
       </Motion>
-
+      
+      <CloseAll />
+      
       <Motion style={{x: spring(state.menuState ? 0 : 400)}}>
         {({x}) =>  
           <div className="springContainer" style={{

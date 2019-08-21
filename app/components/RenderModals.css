@@ -32,3 +32,11 @@
 .renderModals::-webkit-scrollbar-thumb:hover {
   background: cyan; 
 }
+
+#welcomeMessage {
+  position: absolute; 
+  width: 300px;
+  height: auto;
+  top: 40px;
+  left: 40px;
+}

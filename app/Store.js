@@ -1,5 +1,10 @@
 import React from 'react'
-import { ADD_MODAL, REMOVE_MODAL, SET_ACTIVE_MENU, TOGGLE_MENU } from './actionTypes';
+import { 
+  ADD_MODAL,
+  CLOSE_ALL,
+  REMOVE_MODAL, 
+  SET_ACTIVE_MENU, 
+  TOGGLE_MENU } from './actionTypes';
 
 export const Store = React.createContext();
 
@@ -16,6 +21,11 @@ function reducer(state, action) {
       return { 
         ...state, 
         activeModals: [...state.activeModals, action.payload] 
+      };
+    case CLOSE_ALL: 
+      return {
+        ...state, 
+        activeModals: []
       };
     case REMOVE_MODAL:
       const removeModal = state.activeModals.filter(id => id !== action.payload);

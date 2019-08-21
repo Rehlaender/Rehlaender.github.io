@@ -1,14 +1,41 @@
 #info {
-  --info-width: 600px;
+  --info-width: 350px;
 
   width: var(--info-width);
   border: solid 1px white;
   position: absolute;
-  top: 50px;
-  left: 50px;
+  bottom: 100px;
+  right: 50px;
   transition: all 300ms ease-out;
+  padding: 10px;
+  text-align: right;
 }
 
 #info.isSecret {
   opacity: 0;
+}
+
+#info>.container>h1 {
+  font-size: 1.5rem;
+}
+
+
+#info>.container>p {
+  margin: 0px;
+}
+
+img.profilePicture {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+img.profilePicture:hover {
+  cursor: grab;
+}
+
+img.profilePicture:active {
+  cursor: grabbing;
 }

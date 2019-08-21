@@ -14,6 +14,7 @@
   margin-bottom: 5px;
 
   animation: WELCOME 200ms ease-in-out forwards;
+  user-select: none;
 }
 
 .popup>.info-container {
@@ -21,6 +22,10 @@
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
+}
+
+.popup>.info-container>.info {
+  padding: 1rem;
 }
 
 .popup>.closeButton {
@@ -34,9 +39,11 @@
 
 @keyframes WELCOME {
   0% {
+    margin-top: 50px;
     opacity: 0;
   }
   100% {
+    margin-top: 0px;
     opacity: 1;
   }
 }

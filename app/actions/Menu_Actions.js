@@ -1,4 +1,4 @@
-import {SET_ACTIVE_MENU, TOGGLE_MENU} from '../actionTypes';
+import {CLOSE_ALL, SET_ACTIVE_MENU, TOGGLE_MENU} from '../actionTypes';
 
 export const setActiveMenuAction = (menuName, dispatch) => {
   return dispatch({
@@ -10,5 +10,11 @@ export const setActiveMenuAction = (menuName, dispatch) => {
 export const toggleMenuAction = (dispatch) => {
   return dispatch({
     type: TOGGLE_MENU,
+  });
+}
+
+export const closeAllAction = (dispatch) => {
+  return dispatch({
+    type: CLOSE_ALL,
   });
 }

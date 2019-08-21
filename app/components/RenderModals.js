@@ -1,5 +1,6 @@
 import React from 'react';
 import { Store } from '../Store';
+import Typist from 'react-typist';
 
 import { Modal } from './Modal/Modal';
 
@@ -32,7 +33,11 @@ export default function RenderModals() {
           )}
         </div>
       ) : (
-        <div>Hello, welcome. You can check my proyects in the <strong>hamburguesa</strong> button</div>
+        <div id="welcomeMessage">
+          <Typist>
+            Hello, welcome. You can check my proyects in the <strong>hamburguesa</strong> button.
+          </Typist>
+        </div>
       )
     }
 

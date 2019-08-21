@@ -1,0 +1,43 @@
+.mediaButtons {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  color: white;
+}
+
+.mediaButtons>.media-icon {
+  margin-right: 10px;
+  background: black;
+  cursor: pointer;
+}
+
+.mediaButtons>.media-icon:last-child {
+  margin-right: 0px;
+}
+
+a.media-icon {
+  color: white;
+  transition: all 200ms linear;
+}
+
+/* unvisited link */
+a.media-icon:link {
+  color: white;
+}
+
+/* visited link */
+a.media-icon:visited {
+  color: tomato;
+}
+
+/* mouse over link */
+a.media-icon:hover {
+  color: cyan;
+}
+
+/* selected link */
+a.media-icon:active {
+  color: cyan;
+}
