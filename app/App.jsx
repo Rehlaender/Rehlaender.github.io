@@ -1,27 +1,27 @@
 import React from 'react';
-import { Store } from './Store';
 
-import RenderModals from './components/RenderModals';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-import {Menu, Header, Footer} from './components';
-import Secret from './components/Secret/Secret';
+
+import {Hello} from './views/Hello';
 
 export default function App() {
-  const { state, dispatch } = React.useContext(Store);
-
-  React.useEffect(() => {
-    // state.activeModals.length === 0 && renderModals();
-  });
-
   return (
     <React.Fragment>
-      <div className="mainApp">
-        <Header />
-        <Menu />
-        <RenderModals />
-        <Secret />
-        <Footer />
-      </div>
+      <Router>
+        <div className="mainApp">
+          <Switch>
+            <Route path="/">
+              <Hello />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </React.Fragment>
   );
 }
