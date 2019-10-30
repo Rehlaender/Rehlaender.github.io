@@ -1,0 +1,11 @@
+.shapeoutside {  
+  float: left;
+  shape-outside: circle(50%);
+  width: 200px;
+  height: 200px;
+  background: red;
+  clip-path: circle(50%);
+  float: left;
+  opacity: .2;
+  background-color: purple;
+}

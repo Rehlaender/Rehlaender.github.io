@@ -21,3 +21,11 @@ body {
     opacity: 0; }
   100% {
     opacity: 1; } }
+
+.superTransitioner {
+  transition: all 400ms ease-in-out;
+}
+
+section {
+  width: 100%;
+}

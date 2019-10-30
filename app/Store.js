@@ -5,7 +5,9 @@ import {
   OPEN_ALL,
   REMOVE_MODAL, 
   SET_ACTIVE_MENU, 
-  TOGGLE_MENU } from './actionTypes';
+  TOGGLE_MENU,
+  WHERE_WE_GOING 
+} from './actionTypes';
 import {returnProyectIds} from './constants/PROYECTS';
 export const Store = React.createContext();
 
@@ -14,6 +16,7 @@ const initialState = {
   activeModals: [],
   menuState: false,
   isMenuAway: true,
+  deviceOrientation: 'none'
 }
 
 function reducer(state, action) {
@@ -51,6 +54,11 @@ function reducer(state, action) {
         menuState: !state.menuState,
         isMenuAway: true,
         activeMenu: '',
+      };
+    case WHERE_WE_GOING: 
+      return {
+        ...state, 
+        deviceOrientation: action.payload
       };
     default:
       return state;

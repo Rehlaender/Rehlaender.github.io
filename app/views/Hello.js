@@ -1,20 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Store } from '../Store';
+import { setOrientationAction } from '../actions';
 
 import './Hello.css';
 
+import { Title } from '../components';
+
 export const Hello = () => {
+  const { state, dispatch } = React.useContext(Store);
+
   let [orientation, setOrientation] = useState({ a: 0, b: 0, g: 0 });
   let [ax, setAx] = useState(0);
   let [bx, setBx] = useState(0);
   let [gx, setGx] = useState(0);
+  let [isOnHold, setOnHold] = useState(false);
+
+  const prevBx = usePrevious(bx);
 
   useEffect(() => {
     addDeviceOrientationListener();
   }, []);
 
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    }, [value]);
+    return ref.current;
+  }
+
+  useEffect(() => {
+    scrollY();
+  }, [bx]);
+
   useEffect(() => {
     setOrientation({ a: ax, b: bx, g: gx });
+    console.log('change in orientatino', ax, bx, gx);
   }, [ax, bx, gx]);
+
+  const scrollY = () => {
+    if (!state.isOnHold) {
+      if (bx < 30 && bx > -30) {
+        // window.scrollBy(0, 0);
+        setOrientationAction('none', dispatch);
+      } else if (bx > prevBx) {
+        // window.scrollBy(0, 50);
+        setOrientationAction('up', dispatch);
+      } else if (bx < prevBx) {
+        // window.scrollBy(0, -50);
+        setOrientationAction('down', dispatch);
+      }
+    }
+  }
 
   const addDeviceOrientationListener = () => {
     if (window.DeviceOrientationEvent) {
@@ -30,40 +67,36 @@ export const Hello = () => {
 
   return (
     <React.Fragment>
-      <div id="HELLO">
+      <div id="HELLO" onClick={() => { setOnHold(!isOnHold) }}>
         <div className='main_title'>
           <h1>test ♫</h1>
 
           <div className='god'>
+
+            {state.deviceOrientation}
             <label>alpha</label>
-            <input type="range" min="-360" max="360" placeholder="10" onChange={e => setAx(e.target.value)} />
+            <input type="range" min="0" max="360" placeholder="180" onChange={e => setAx(e.target.value)} />
             <label>beta</label>
-            <input type="range" min="-360" max="360" placeholder="10" onChange={e => setBx(e.target.value)} />
+            <input type="range" min="0" max="360" placeholder="180" onChange={e => setBx(e.target.value)} />
             <label>gama</label>
-            <input type="range" min="-360" max="360" placeholder="0" onChange={e => setGx(e.target.value)} />
+            <input type="range" min="0" max="360" placeholder="180" onChange={e => setGx(e.target.value)} />
           </div>
         </div>
 
-        <div className='main_content'>
-          <svg viewBox="0 0 100 100" width="100%" height="100%" >
-
-            {/* <pattern id="pattern-circles" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <image href="https://www.transparenttextures.com/patterns/cardboard-flat.png" x="0" y="0" width="100" height="100" />
-            </pattern> */}
-            <g className='vector-title'>
-              {/* <text className='vector-title' x="30%" y="150" 
-                font-size="2rem">
-                title
-              </text> */}
-              <path d={`M 0 0 l ${bx} ${ax}`} stroke="red" />
-            </g>
-            <g>
-              <path d={`M -10 100 H 110 V 50 H -10 Z`} />
-            </g>
-            <rect x="0" y="0" width="100%" height="100%"/>
-          </svg>
+        <div className='status_button'>
+          {
+            isOnHold ? `| |` : `►`
+          }
         </div>
 
+        <div className='main_content'>
+          <Title />
+        </div>
+
+        <div className='bottom_content'>
+          <h3>contact</h3>
+          lorem ipsum a{JSON.stringify({ 'a': 'asdf', isOnHold })}
+        </div>
       </div>
     </React.Fragment>
   );

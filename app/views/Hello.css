@@ -1,8 +1,10 @@
 #HELLO {
-  height: 100vh;
+  height: 300vh;
   width: 100vw;
   position: relative;
   overflow: hidden;
+  background: darkgray;
+  position: relative;
 }
 
 div.main_title {
@@ -10,8 +12,22 @@ div.main_title {
   width: fit-content;
   padding: 0 1rem;
   position: fixed;
+  /* top: 1rem;
+  left: 1rem; */
+}
+
+.status_button {
+  position: fixed;
   top: 1rem;
-  left: 1rem;
+  right: 1rem;
+  background: black;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 div.main_title > .god {
@@ -20,14 +36,23 @@ div.main_title > .god {
 }
 
 div.main_content {
-  width: 100%;
-  height: 100%; 
   background: gray;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+div.block {
+  background: black;
+  border-bottom: 1px solid red;
+  height: 10vh
+}
+div.bottom_content {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background: black;
+}
 svg {
   /* background: red; */
 }
