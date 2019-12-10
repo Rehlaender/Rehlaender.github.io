@@ -5,6 +5,11 @@ body {
   text-align: center;
 }
 
+section {
+  display: flex;
+  justify-content: center;
+}
+
 section > .content {
   display: flex;
   justify-content: center;
@@ -22,7 +27,7 @@ h2 {
 
 h3 {
   font-size: 1.2rem;
-  margin-bottom: 0px;
+  margin: 0px;
 }
 
 h4 {
@@ -53,12 +58,23 @@ p {
 
 .stuff {
   width: 80%;
-  background: red;  
+  background: tomato;  
   margin: 1rem 0rem;
+  color: lightgray;
+  padding: 0.5rem;
 }
 
 .stuff > h4 > u {
   color: white;
+}
+
+.text {
+  margin-top: 1rem;
+}
+
+.text > p {
+  margin: 0px;
+  font-weight: bold;
 }
 
 .icon-container {
@@ -75,11 +91,17 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -2rem;
 }
 
 .icon-container > .icon:nth-child(2),
 .icon-container > .icon:nth-child(3) {
   margin-top: 2rem;
+}
+
+.icon:hover {
+  background: tomato;
+  cursor: pointer;
 }
 
 h1, h2, h3, h4, p, span {
