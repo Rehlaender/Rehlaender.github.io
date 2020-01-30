@@ -35,6 +35,34 @@ h4 {
   margin: 0px;
 }
 
+
+#codeMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  transition: all 200ms ease-in-out;
+}
+
+#codeMenu.hidden {
+  left: -250px;
+}
+
+.code-button {
+  padding: 0.5rem 1rem;
+  background: tomato;
+  color: white;
+  height: 35px;
+  cursor: pointer;
+}
+
+.code-list {
+  background: white;
+  width: 250px;
+}
+
 .image-container {
   width: 200px;
   margin-bottom: -20px;

@@ -65,6 +65,10 @@ section {
   position: relative;
 }
 
+.code-container {
+  background: blue;
+}
+
 .triangle-text {
   border-width: 0 100px 173.2px 100px;
 }
